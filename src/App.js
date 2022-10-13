@@ -1,4 +1,4 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
 
 // pages
 import Home from './pages/Home'
@@ -26,6 +26,9 @@ function App() {
               <h2>Test </h2><p>Hello!</p>
             </div>
           )} />
+          {/* in version 5 we use Redirect to direct the user 
+          to another page but in v6 we use Navigate example below  */}
+          <Route path='/redirect' element={<Navigate to='/about'/>} />
         </Routes>
       </BrowserRouter>
     </div>
