@@ -1,7 +1,7 @@
-import {useNavigate} from "react-router-dom"
+import {useNavigate,Route, Routes} from "react-router-dom"
 
 // nested routes
-// import Offers from './Offers';
+import Offers from './Offers';
 
 export default function About() {
   // in react v6 we dont use useHistory insted we use
@@ -30,11 +30,12 @@ export default function About() {
         Recusandae, ad!
       </p>
       {/* as you can see we dont use also  */}
-      <button onClick={()=>navigate('/products')}>See our products</button>
+      <button onClick={() => navigate('/products')}>See our products</button>
 
-      {/* <Route path="/about/offers">
-        <Offers />
-      </Route> */}
+      {/* how to deal with nested route in react v6 */}
+      <Routes>
+        <Route path='offers' element={<Offers />} />
+      </Routes>
     </div>
   );
 }

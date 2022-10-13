@@ -20,7 +20,11 @@ function App() {
         </nav>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/about' element={<About />} />
+          {/* the reason why we use `/about/asteric` is
+           because we want the /about to match any other page
+            especially nested to it
+             i fwe dont use /asteric it will bring an empty page   */}
+          <Route path='/about/*' element={<About />} />
           <Route path='/products/:id' element={<ProductDetails />} />
           <Route path='/products' element={<Products />} />
           <Route
@@ -38,7 +42,9 @@ function App() {
           {/* use Navigate to do 2 conditions */}
           <Route
             path='/checkout'
-            element={cardIsEmpty ? <Navigate to='/products' /> : <p>Check out</p>}
+            element={
+              cardIsEmpty ? <Navigate to='/products' /> : <p>Check out</p>
+            }
           />
         </Routes>
       </BrowserRouter>
