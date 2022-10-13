@@ -25,7 +25,7 @@ function App() {
             especially nested to it
              i fwe dont use /asteric it will bring an empty page   */}
           <Route path='/about/*' element={<About />} />
-          <Route path='/products/:id' element={<ProductDetails />} />
+          <Route path='/products/:id/*' element={<ProductDetails />} />
           <Route path='/products' element={<Products />} />
           <Route
             path='/test'
