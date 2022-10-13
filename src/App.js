@@ -1,12 +1,14 @@
-import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Link, Navigate, Route, Routes } from 'react-router-dom';
 
 // pages
-import Home from './pages/Home'
-import About from './pages/About'
-import Products from './pages/Products'
-import ProductDetails from './pages/ProductDetails'
+import Home from './pages/Home';
+import About from './pages/About';
+import Products from './pages/Products';
+import ProductDetails from './pages/ProductDetails';
+import { useState } from 'react';
 
 function App() {
+  const [cardIsEmpty] = useState(true);
   return (
     <div className='App'>
       <BrowserRouter>
@@ -21,18 +23,27 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/products/:id' element={<ProductDetails />} />
           <Route path='/products' element={<Products />} />
-          <Route path='/test' element={(
-            <div>
-              <h2>Test </h2><p>Hello!</p>
-            </div>
-          )} />
+          <Route
+            path='/test'
+            element={
+              <div>
+                <h2>Test </h2>
+                <p>Hello!</p>
+              </div>
+            }
+          />
           {/* in version 5 we use Redirect to direct the user 
           to another page but in v6 we use Navigate example below  */}
-          <Route path='/redirect' element={<Navigate to='/about'/>} />
+          <Route path='/redirect' element={<Navigate to='/about' />} />
+          {/* use Navigate to do 2 conditions */}
+          <Route
+            path='/checkout'
+            element={cardIsEmpty ? <Navigate to='/products' /> : <p>Check out</p>}
+          />
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
 
-export default App
+export default App;
